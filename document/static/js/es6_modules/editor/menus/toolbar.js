@@ -47,6 +47,12 @@ export class ModMenusToolbar {
                 this.mod.editor.mod.comments.interactions.createNewComment()
             )
         })
+	// anchor
+        jQuery(document).on('mousedown', '#button-anchor:not(.disabled)', event => {
+            this.executeAction(event, () =>
+                this.mod.editor.mod.anchors.anchorInteractions.createNewAnchor()
+            )
+        })
 
         let that = this
         // blockstyle paragraph, h1 - h3, lists

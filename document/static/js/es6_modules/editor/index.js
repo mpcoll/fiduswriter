@@ -6,6 +6,7 @@ import {collabEditing} from "prosemirror-old/dist/collab"
 import {buildKeymap} from "prosemirror-old/dist/example-setup"
 import {docSchema} from "../schema/document"
 import {ModComments} from "./comments"
+import {ModAnchors} from "./anchors"
 import {ModFootnotes} from "./footnotes"
 import {ModCitations} from "./citations"
 import {ModCollab} from "./collab"
@@ -49,11 +50,13 @@ export class Editor {
         new ModServerCommunications(this)
     }
 
+
     init() {
         new ModSettings(this)
         jQuery(document).ready(() => {
             this.startEditor()
         })
+	
     }
 
     startEditor() {
@@ -66,6 +69,7 @@ export class Editor {
         new ModCollab(this)
         new ModTools(this)
         new ModComments(this)
+        new ModAnchors(this)
         this.pm.on.change.add(
             () => {this.docInfo.changed = true}
         )
@@ -85,6 +89,7 @@ export class Editor {
         this.mod.serverCommunications.init()
         this.setSaveTimers()
     }
+
 
     setSaveTimers() {
         // Set Auto-save to send the document every two minutes, if it has changed.

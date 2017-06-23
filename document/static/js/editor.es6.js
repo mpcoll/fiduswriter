@@ -12,3 +12,5 @@ let theEditor = new Editor(id)
 theEditor.init()
 
 window.theEditor = theEditor
+
+

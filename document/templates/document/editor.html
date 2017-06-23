@@ -21,6 +21,7 @@
                 var websocketServer = location.host.split(':')[0];
             {% endif %}
         </script>
+	
         <style type="text/css" id="placeholder-styles">
         </style>
         <!-- KaTeX -->
@@ -224,7 +225,15 @@
             </nav>
             <div id="current-editors"></div>
         </header>
-
+	<script type="text/javascript">
+			
+			function scrollTo(hash) {
+				location.hash = "." + hash;
+			}
+			$( document ).ready(function() {
+				
+});
+		</script>
         <nav id="editor-navigation">
             <span id="open-close-header" class="fw-button fw-light fw-large" title="{% trans "Show/hide the top menu." %}">
                 <i class="icon-angle-double-up"></i>
@@ -391,8 +400,18 @@
                             </span>
                         </button>
                     </div>
+		    <div class="toolbarcomment ui-buttonset comment-only">
+                        <button class="fw-button fw-light fw-large fw-square"  id="button-anchor" title="{% trans "place anchor" %}">
+                            <span class="ui-button-text">
+                                <i class="icon-comment-empty"></i>
+                            </span>
+                        </button>
+                    </div>
                     <div id="comments-display" class="fw-button fw-light fw-large comment-only" title="{% trans "Show/hide comments" %}">
                         {% trans "Comments" %}
+                    </div>
+                    <div id="outlines-display" class="fw-button fw-light fw-small" title="{% trans "Show/hide outlines" %}">
+                        {% trans "Outlines" %}
                     </div>
                     <!-- <div id="comments-filter" class="ui-buttonset multiButtons" title="{% trans "Filter comments" %}">
                         <span class="multibuttonsCover fw-button fw-light fw-large" title="{% trans "Filter comments" %}" id="comment-filter-dropdown">{% trans "Filter comments" %}</span>
@@ -435,7 +454,10 @@
             </div>
         </nav>
         <div id="editor-content">
-            <div id="flow" class="comments-enabled CT-hide">
+            <div id="outlines" class="outline hide">
+				
+			</div>
+			<div id="flow" class="comments-enabled CT-hide">
                 <div id="paper-editable">
                     <div id="document-editable" class="user-contents"></div>
                     <div id="footnote-box-container">
@@ -444,7 +466,7 @@
                 </div>
                 <div class="article-bibliography user-contents"></div>
             </div>
-
+			
             <div id="comment-box-container"></div>
             <div id="tracking-box-container"></div>
         </div>

@@ -127,6 +127,8 @@ export class ModMenusUpdateUI {
         const currentElement = start.node(3)
         const endElement = end.node(2)
 
+        
+      
         if (startElement !== endElement) {
             /* Selection goes across document parts or across footnotes */
             this.calculatePlaceHolderCss(pm)
@@ -219,7 +221,39 @@ export class ModMenusUpdateUI {
             }
 
         }
+        let foo=this.getParameterByName('anchor');
+        if (foo) {
+        //let x = document.getElementsByClassName('.comment[data-id="'+foo+'"]')[0];
+        
+        let x = jQuery('.comment[data-id="'+foo+'"]')[0]
+        jQuery('html, body').stop().animate({
+            scrollTop: x.offsetTop+500
+        }, 1000);
+        var newUrl = this.refineUrl();//fetch new url
+        window.history.pushState("", "", "/"+newUrl );
+        }
         return
+    }
+    /**
+    to get the parameter from URI 
+    */
+    getParameterByName(name, url) {
+    	if (!url) url = window.location.href;
+    	    name = name.replace(/[\[\]]/g, "\\$&");
+    	        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    	                results = regex.exec(url);
+    	                    if (!results) return null;
+    	                        if (!results[2]) return '';
+    	return decodeURIComponent(results[2].replace(/\+/g, " "));
+    	}
+    refineUrl()
+    {
+    //get full url
+    var url = window.location.href;
+    //get url after/  
+    var value = url.substring(0,url.lastIndexOf('/'));
+    var value = value.substring(url.lastIndexOf('document'));
+    return value;     
     }
 
 

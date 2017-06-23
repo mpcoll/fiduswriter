@@ -666,6 +666,38 @@ table.insert-table-selection td.selected.hover {
 .csl-right-inline {
     padding-left: 20px;
 }
+#outlines.hide {
+    display: none;
+}
+#outlines.outline{
+     background: white;
+     width: 500px;
+     max-height: 350px;
+     margin-right: 10px;
+     border: 1px solid #ccc;
+     position: relative;
+     padding: 15px;
+     overflow: scroll;
+}
+#anchorSummary.elipse{
+
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   line-height: 16px;     /* fallback */
+   max-height: 16px;      /* fallback */
+   -webkit-line-clamp: 2; /* number of lines to show */
+   -webkit-box-orient: vertical;
+    padding: 3px;
+    border-bottom: 1px dotted coral;
+    margin-bottom:5px;
+}
+
+#outlinebox.anchor-box{
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
 
 /* Wide table: used for submission dialog */
 
